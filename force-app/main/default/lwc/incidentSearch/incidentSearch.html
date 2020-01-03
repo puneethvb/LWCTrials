@@ -1,0 +1,35 @@
+<!--
+  @File Name          : incidentSearch.html
+  @Description        : 
+  @Author             : ChangeMeIn@UserSettingsUnder.SFDoc
+  @Group              : 
+  @Last Modified By   : ChangeMeIn@UserSettingsUnder.SFDoc
+  @Last Modified On   : 2/1/2020, 9:42:48 pm
+  @Modification Log   : 
+  Ver       Date            Author      		    Modification
+  1.0    2/1/2020   ChangeMeIn@UserSettingsUnder.SFDoc     Initial Version
+-->
+<template>
+    <lightning-card title="Search Incidents">
+        <lightning-input type="text" name="incNo" label="Incident#" value={incNum} onchange={handleIncChange}></lightning-input>
+    </lightning-card>
+    <template if:true={statusValues.data}>
+        <lightning-combobox
+            name="status"
+            label="Status"
+            value={statusValue}
+            placeholder="Select status"
+            options={statusValues.data.values}
+            onchange={handlePickListChange} ></lightning-combobox>
+    </template>
+    <template if:true={appliesToValues.data}>
+    <lightning-combobox
+        name="appliesTo"
+        label="Applies To"
+        value={appliesToValue}
+        placeholder="Select Applies to"
+        options={appliesToValues.data.values}
+        onchange={handlePickListChange} ></lightning-combobox>
+    </template>
+    <lightning-button variant="brand" label="Search Incidents" title="Primary action" onclick={handleSearch} class="slds-m-left_x-small"></lightning-button>
+</template>
